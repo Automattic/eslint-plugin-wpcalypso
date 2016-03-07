@@ -66,6 +66,12 @@ var rule = require( '../../../lib/rules/i18n-no-variables' ),
 			errors: [ {
 				message: rule.ERROR_MESSAGE
 			} ]
+		},
+		{
+			code: 'translate( \'Hello \' + name );',
+			errors: [ {
+				message: rule.ERROR_MESSAGE
+			} ]
 		}
 	]
 } );
