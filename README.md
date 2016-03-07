@@ -46,6 +46,7 @@ Then configure the rules you want to use under the rules section.
 - [`i18n-ellipsis`](docs/rules/i18n-ellipsis.md): Disallow using three dots in translate strings
 - [`i18n-no-variables`](docs/rules/i18n-no-variables.md): Disallow variables as translate strings
 - [`i18n-no-placeholders-only`](docs/rules/i18n-no-placeholders-only.md): Disallow strings which include only placeholders
+- [`i18n-mismatched-placeholders`](docs/rules/i18n-mismatched-placeholders.md): Ensure placeholder counts match between singular and plural strings
 
 ## License
 
