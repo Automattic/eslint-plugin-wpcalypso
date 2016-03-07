@@ -43,6 +43,7 @@ Then configure the rules you want to use under the rules section.
 ## Supported Rules
 
 - [`no-lodash-import`](docs/rules/no-lodash-import.md): Disallow importing from the root Lodash module
+- [`i18n-ellipsis`](docs/rules/i18n-ellipsis.md): Disallow using three dots in translate strings
 
 ## License
 
