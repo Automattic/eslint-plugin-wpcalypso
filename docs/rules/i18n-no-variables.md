@@ -1,0 +1,23 @@
+# Disallow variables as translate strings
+
+Translate strings cannot be variables or functions, but rather must always be string literals. This is a limitation of our translation tooling, as it collects strings through static analysis of the code. The exception to this rule is string concatenation within the argument itself.
+
+More information: https://wpcalypso.wordpress.com/devdocs/client/lib/mixins/i18n#strings-only
+
+## Rule Details
+
+The following patterns are considered warnings:
+
+```js
+translate( myString );
+
+translate( myStringFunc() );
+```
+
+The following patterns are not warnings:
+
+```js
+translate( 'Hello World!' );
+
+translate( 'Hello' + ' World!' );
+```
