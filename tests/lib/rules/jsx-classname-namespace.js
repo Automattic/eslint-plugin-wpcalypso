@@ -6,12 +6,45 @@
  */
 'use strict';
 
+var EXPECTED_FOO_ERROR, EXPECTED_FOO_PREFIX_ERROR;
+
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
 var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 	RuleTester = require( 'eslint' ).RuleTester;
+
+//------------------------------------------------------------------------------
+// Utility
+//------------------------------------------------------------------------------
+
+/**
+ * Given a message containing data terms, format the string using the specified
+ * terms object.
+ *
+ * @see https://github.com/eslint/eslint/blob/v2.12.0/lib/eslint.js#L964-L971
+ *
+ * @param  {String} message Message template
+ * @param  {Object} terms   Terms
+ * @return {String}         Formatted message
+ */
+function formatMessage( message, terms ) {
+	return message.replace( /\{\{\s*(.+?)\s*\}\}/g, function( fullMatch, term ) {
+		if ( terms.hasOwnProperty( term ) ) {
+			return terms[ term ];
+		}
+
+		return fullMatch;
+	} );
+}
+
+//------------------------------------------------------------------------------
+// Constants
+//------------------------------------------------------------------------------
+
+EXPECTED_FOO_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo' } );
+EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo__ prefix' } );
 
 //------------------------------------------------------------------------------
 // Tests
@@ -134,7 +167,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -142,7 +175,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -151,7 +184,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -160,7 +193,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -169,7 +202,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -178,7 +211,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -187,7 +220,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -196,7 +229,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -205,7 +238,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -214,7 +247,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -222,7 +255,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -230,7 +263,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -239,7 +272,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_PREFIX_ERROR
 			} ]
 		},
 		{
@@ -248,7 +281,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_PREFIX_ERROR
 			} ]
 		},
 		{
@@ -256,7 +289,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_PREFIX_ERROR
 			} ]
 		},
 		{
@@ -264,7 +297,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_PREFIX_ERROR
 			} ]
 		},
 		{
@@ -273,7 +306,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -282,7 +315,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		},
 		{
@@ -291,7 +324,7 @@ var rule = require( '../../../lib/rules/jsx-classname-namespace' ),
 			ecmaFeatures: { jsx: true, modules: true },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
-				message: rule.ERROR_MESSAGE
+				message: EXPECTED_FOO_ERROR
 			} ]
 		}
 	]
