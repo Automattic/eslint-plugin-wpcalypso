@@ -58,6 +58,11 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 			filename: '/tmp/foo/index.js'
 		},
 		{
+			code: 'export default function() { const foo = <Foo className="foo" />; return foo; }',
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js'
+		},
+		{
 			code: 'export default function() { return <Foo className="quux foo" />; }',
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
 			filename: '/tmp/foo/index.js'
@@ -116,6 +121,11 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 		},
 		{
 			code: 'export default React.createClass( { render: function() { return <Foo className="foo" />; } } );',
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js'
+		},
+		{
+			code: 'export default React.createClass( { render: function() { const foo = <Foo className="foo" />; return foo; } } );',
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
 			filename: '/tmp/foo/index.js'
 		},
@@ -213,6 +223,14 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 			} ]
 		},
 		{
+			code: 'export default function() { const foo = <Foo className="foobar" />; return foo; }',
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js',
+			errors: [ {
+				message: EXPECTED_FOO_ERROR
+			} ]
+		},
+		{
 			code: 'export default function() { return <Foo className="quux foobar" />; }',
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
 			filename: '/tmp/foo/index.js',
@@ -302,6 +320,14 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 		},
 		{
 			code: 'export default React.createClass( { render: function() { return <Foo className="foobar" />; } } );',
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js',
+			errors: [ {
+				message: EXPECTED_FOO_ERROR
+			} ]
+		},
+		{
+			code: 'export default React.createClass( { render: function() { const foo = <Foo className="foobar" />; return foo; } } );',
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
 			filename: '/tmp/foo/index.js',
 			errors: [ {
