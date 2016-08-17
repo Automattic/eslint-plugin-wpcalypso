@@ -120,7 +120,18 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 			filename: '/tmp/foo/index.js'
 		},
 		{
+			code: 'export default React.createClass( { render: function() { return ( <Foo className="foo" /> ); } } );',
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js'
+		},
+		{
 			code: 'export default React.createClass( { render() { return <Foo className="foo"><div className="foo__child" /></Foo>; } } );',
+			env: { es6: true },
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js'
+		},
+		{
+			code: 'export default React.createClass( { render() { const child = <div className="foo__child" />; return <Foo className="foo">{ child }</Foo>; } } );',
 			env: { es6: true },
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
 			filename: '/tmp/foo/index.js'
@@ -298,7 +309,24 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 			} ]
 		},
 		{
+			code: 'export default React.createClass( { render: function() { return ( <Foo className="foobar" /> ); } } );',
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js',
+			errors: [ {
+				message: EXPECTED_FOO_ERROR
+			} ]
+		},
+		{
 			code: 'export default React.createClass( { render() { return <Foo className="foo"><div className="foobar__child" /></Foo>; } } );',
+			env: { es6: true },
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js',
+			errors: [ {
+				message: EXPECTED_FOO_PREFIX_ERROR
+			} ]
+		},
+		{
+			code: 'export default React.createClass( { render() { const child = <div className="foo" />; return <Foo className="foo">{ child }</Foo>; } } );',
 			env: { es6: true },
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
 			filename: '/tmp/foo/index.js',
