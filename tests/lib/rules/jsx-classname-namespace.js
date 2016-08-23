@@ -68,7 +68,18 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 			filename: '/tmp/foo/index.js'
 		},
 		{
+			code: 'export default function() { const child = <div className="foo__child" />; return <Foo className="foo">{ child }</Foo>; }',
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js'
+		},
+		{
 			code: 'export default () => <Foo className="foo" />;',
+			env: { es6: true },
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js'
+		},
+		{
+			code: 'export default () => { return <Foo className="foo" />; }',
 			env: { es6: true },
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
 			filename: '/tmp/foo/index.js'
@@ -231,6 +242,14 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 			} ]
 		},
 		{
+			code: 'export default function() { const child = <div className="foo" />; return <Foo className="foo">{ child }</Foo>; }',
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js',
+			errors: [ {
+				message: EXPECTED_FOO_PREFIX_ERROR
+			} ]
+		},
+		{
 			code: 'export default function() { return <Foo className="quux foobar" />; }',
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
 			filename: '/tmp/foo/index.js',
@@ -240,6 +259,15 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 		},
 		{
 			code: 'export default () => <Foo className="foobar" />;',
+			env: { es6: true },
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/index.js',
+			errors: [ {
+				message: EXPECTED_FOO_ERROR
+			} ]
+		},
+		{
+			code: 'export default () => { return <Foo className="foobar" />; }',
 			env: { es6: true },
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
 			filename: '/tmp/foo/index.js',
