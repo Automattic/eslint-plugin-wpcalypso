@@ -29,7 +29,6 @@
     "eslint": "^2.13.1",
     "eslint-config-wpcalypso": "^0.2.0",
     "eslint-plugin-wpcalypso": "file:.",
-    "fs-extra": "^0.30.0",
     "mocha": "2.3.4"
   },
   "engines": {
