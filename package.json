@@ -17,9 +17,7 @@
     "lib/"
   ],
   "scripts": {
-    "linkself": "node -e \"require( 'fs-extra' ).ensureSymlinkSync( '..', 'node_modules/' + process.env.npm_package_name );\"",
     "tests": "mocha tests --recursive",
-    "prelint": "npm run linkself",
     "lint": "eslint lib/ tests/",
     "test": "npm run tests && npm run lint"
   },
@@ -30,6 +28,7 @@
     "babel-eslint": "^6.1.0",
     "eslint": "^2.13.1",
     "eslint-config-wpcalypso": "^0.2.0",
+    "eslint-plugin-wpcalypso": "file:.",
     "fs-extra": "^0.30.0",
     "mocha": "2.3.4"
   },
