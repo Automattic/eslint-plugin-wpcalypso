@@ -6,6 +6,8 @@
  */
 'use strict';
 
+var NO_NEWLINES, NO_CONSECUTIVE_SPACES, NO_TABS;
+
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
@@ -19,9 +21,9 @@ var rule = require( '../../../lib/rules/i18n-no-collapsible-whitespace' ),
 // Constants
 //------------------------------------------------------------------------------
 
-const NO_NEWLINES = formatMessage( rule.ERROR_MESSAGE, { problem: ' (\\n)' } );
-const NO_CONSECUTIVE_SPACES = formatMessage( rule.ERROR_MESSAGE, { problem: ' (consecutive spaces)' } );
-const NO_TABS = formatMessage( rule.ERROR_MESSAGE, { problem: ' (\\t)' } );
+NO_NEWLINES = formatMessage( rule.ERROR_MESSAGE, { problem: ' (\\n)' } );
+NO_CONSECUTIVE_SPACES = formatMessage( rule.ERROR_MESSAGE, { problem: ' (consecutive spaces)' } );
+NO_TABS = formatMessage( rule.ERROR_MESSAGE, { problem: ' (\\t)' } );
 
 //------------------------------------------------------------------------------
 // Tests
