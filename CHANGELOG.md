@@ -1,6 +1,7 @@
 #### v3.0.0 (---)
 
 - Breaking: Removed `no-lodash-import` rule in favor of using [`babel-plugin-lodash`](https://github.com/lodash/babel-plugin-lodash) to transform root Lodash imports
+- Breaking: Removed `i18n-no-newlines` rule in favor of using `i18n-no-collapsible-whitespace`, which warns for a superset of whitespace issues
 - New rule: [`import-docblock`](docs/rules/import-docblock.md)
 - Fix: `jsx-classname-namespace` will not allow underscores except as separator after namespace
 
