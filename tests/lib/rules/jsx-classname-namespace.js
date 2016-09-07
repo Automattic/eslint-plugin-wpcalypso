@@ -221,6 +221,11 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 			code: 'export default function() { return <div className="foo__child" />; }',
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
 			filename: '/tmp/foo/foo-child.js'
+		},
+		{
+			code: 'export default function() { return <div className="foo__child-example2" />; }',
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/foo-child.js'
 		}
 	],
 
