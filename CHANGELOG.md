@@ -1,5 +1,6 @@
-#### v?.?.? (---)
+#### v3.0.0 (---)
 
+- Breaking: Removed `no-lodash-import` rule in favor of using [`babel-plugin-lodash`](https://github.com/lodash/babel-plugin-lodash) to transform root Lodash imports
 - New rule: [`import-docblock`](docs/rules/import-docblock.md)
 - Fix: `jsx-classname-namespace` will not allow underscores except as separator after namespace
 
