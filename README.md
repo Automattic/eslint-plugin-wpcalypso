@@ -52,6 +52,7 @@ Then configure the rules you want to use under the rules section.
 - [`jsx-classname-namespace`](docs/rules/jsx-classname-namespace.md): Ensure JSX className adheres to CSS namespace guidelines
 - [`jsx-gridicon-size`](docs/rules/jsx-gridicon-size.md): Enforce recommended Gridicon size attributes
 - [`import-docblock`](docs/rules/import-docblock.md): Enforce external, internal dependencies docblocks
+- [`postMessage-no-wildcard-targets`](docs/rules/postMessage-no-wildcard-targets): Disallow using the wildcard '*' in `postMessage`
 
 ## License
 
