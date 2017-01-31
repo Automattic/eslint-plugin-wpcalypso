@@ -1,6 +1,6 @@
 #### v3.1.0 (2017-01-26)
 
- - New rule: [`postMessage-no-wildcard-targets`](docs/rules/postMessage-no-wildcard-targets.md)
+ - New rule: [`post-message-no-wildcard-targets`](docs/rules/post-message-no-wildcard-targets.md)
 
 #### v3.0.2 (2016-10-24)
 

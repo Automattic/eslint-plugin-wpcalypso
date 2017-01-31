@@ -10,7 +10,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require( '../../../lib/rules/postMessage-no-wildcard-targets' ),
+var rule = require( '../../../lib/rules/post-message-no-wildcard-targets' ),
     config = { env: { es6: true } },
 	RuleTester = require( 'eslint' ).RuleTester;
 
@@ -18,7 +18,7 @@ var rule = require( '../../../lib/rules/postMessage-no-wildcard-targets' ),
 // Tests
 //------------------------------------------------------------------------------
 
-( new RuleTester( config ) ).run( 'postMessage-no-wildcard-targets', rule, {
+( new RuleTester( config ) ).run( 'post-message-no-wildcard-targets', rule, {
     valid: [
         { code: 'foo()' },
         { code: `foo( 1, '*' )` },
