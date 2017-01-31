@@ -40,6 +40,15 @@ var rule = require( '../../../lib/rules/post-message-no-wildcard-targets' ),
 		}, {
 			code: 'postMessage( null, `*` )',
 			errors: [ { message: rule.ERROR_MESSAGE } ]
+		}, {
+			code: 'window.postMessage( null, \'*\' )',
+			errors: [ { message: rule.ERROR_MESSAGE } ]
+		}, {
+			code: 'frame.postMessage( null, \'*\' )',
+			errors: [ { message: rule.ERROR_MESSAGE } ]
+		}, {
+			code: 'a.contentWindow.postMessage( null, \'*\' )',
+			errors: [ { message: rule.ERROR_MESSAGE } ]
 		}
 	]
 } );
