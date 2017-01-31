@@ -11,7 +11,7 @@
 //------------------------------------------------------------------------------
 
 var rule = require( '../../../lib/rules/post-message-no-wildcard-targets' ),
-    config = { env: { es6: true } },
+	config = { env: { es6: true } },
 	RuleTester = require( 'eslint' ).RuleTester;
 
 //------------------------------------------------------------------------------
@@ -19,27 +19,27 @@ var rule = require( '../../../lib/rules/post-message-no-wildcard-targets' ),
 //------------------------------------------------------------------------------
 
 ( new RuleTester( config ) ).run( 'post-message-no-wildcard-targets', rule, {
-    valid: [
+	valid: [
         { code: 'foo()' },
-        { code: `foo( 1, '*' )` },
-        { code: `postMessage( 1, 'test' )` },
-        { code: `postMessage( null, test )` },
-        { code: `postMessage( true, test() )` }
-    ],
+        { code: 'foo( 1, \'*\' )' },
+        { code: 'postMessage( 1, \'test\' )' },
+        { code: 'postMessage( null, test )' },
+        { code: 'postMessage( true, test() )' }
+	],
 
-    invalid: [
-        {
-            code: `postMessage( 'bob', '*' )`,
-            errors: [ { message: rule.ERROR_MESSAGE } ]
-        }, {
-            code: `postMessage( false, '*' )`,
-            errors: [ { message: rule.ERROR_MESSAGE } ]
-        }, {
-            code: `postMessage( JSON.stringify( {} ), "*" )`,
-            errors: [ { message: rule.ERROR_MESSAGE } ]
-        }, {
-            code: 'postMessage( null, `*` )',
-            errors: [ { message: rule.ERROR_MESSAGE } ]
-        }
-    ]
+	invalid: [
+		{
+			code: 'postMessage( \'bob\', \'*\' )',
+			errors: [ { message: rule.ERROR_MESSAGE } ]
+		}, {
+			code: 'postMessage( false, \'*\' )',
+			errors: [ { message: rule.ERROR_MESSAGE } ]
+		}, {
+			code: 'postMessage( JSON.stringify( {} ), "*" )',
+			errors: [ { message: rule.ERROR_MESSAGE } ]
+		}, {
+			code: 'postMessage( null, `*` )',
+			errors: [ { message: rule.ERROR_MESSAGE } ]
+		}
+	]
 } );
