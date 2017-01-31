@@ -20,11 +20,11 @@ var rule = require( '../../../lib/rules/post-message-no-wildcard-targets' ),
 
 ( new RuleTester( config ) ).run( 'post-message-no-wildcard-targets', rule, {
 	valid: [
-        { code: 'foo()' },
-        { code: 'foo( 1, \'*\' )' },
-        { code: 'postMessage( 1, \'test\' )' },
-        { code: 'postMessage( null, test )' },
-        { code: 'postMessage( true, test() )' }
+		{ code: 'foo()' },
+		{ code: 'foo( 1, \'*\' )' },
+		{ code: 'postMessage( 1, \'test\' )' },
+		{ code: 'postMessage( null, test )' },
+		{ code: 'postMessage( true, test() )' }
 	],
 
 	invalid: [
