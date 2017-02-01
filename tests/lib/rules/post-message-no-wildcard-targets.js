@@ -24,7 +24,8 @@ var rule = require( '../../../lib/rules/post-message-no-wildcard-targets' ),
 		{ code: 'foo( 1, \'*\' )' },
 		{ code: 'postMessage( 1, \'test\' )' },
 		{ code: 'postMessage( null, test )' },
-		{ code: 'postMessage( true, test() )' }
+		{ code: 'postMessage( true, test() )' },
+		{ code: 'postMessage( \'*\', \'some.domain\' )' }
 	],
 
 	invalid: [
