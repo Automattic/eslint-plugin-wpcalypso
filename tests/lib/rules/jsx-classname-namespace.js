@@ -449,6 +449,18 @@ EXPECTED_FOO_PREFIX_ERROR = formatMessage( rule.ERROR_MESSAGE, { expected: 'foo_
 			} ]
 		},
 		{
+			code: 'export default function() { return <div className="foo" />; }',
+			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
+			filename: '/tmp/foo/foo-child.js',
+			options: [ { rootFiles: [ 'one.js' ] } ],
+			errors: [ {
+				message: formatMessage(
+					rule.ERROR_MESSAGE,
+					{ expected: 'foo__ prefix or to be in one.js' }
+				)
+			} ]
+		},
+		{
 			code: 'export default function() { return <Foo className="foo"><div className="foo__" /></Foo>; }',
 			env: { es6: true },
 			parserOptions: { ecmaFeatures: { jsx: true }, sourceType: 'module' },
