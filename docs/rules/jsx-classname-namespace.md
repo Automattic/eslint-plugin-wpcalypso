@@ -51,7 +51,7 @@ For example, you can allow `index.jsx` and `main.jsx`:
 
 ```json
 {
-    "jsx-classname-namespace": [
+	"jsx-classname-namespace": [
 		"error",
 		{
 			"rootFiles": [ "index.jsx", "main.jsx" ]
