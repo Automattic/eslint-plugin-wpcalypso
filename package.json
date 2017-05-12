@@ -22,6 +22,7 @@
     "test": "npm run tests && npm run lint"
   },
   "dependencies": {
+    "lodash": "4.17.4",
     "requireindex": "^1.1.0"
   },
   "devDependencies": {
