@@ -1,4 +1,4 @@
-# Disallow unbound `this` in JSX Props
+# Disallow unbound members of `this` in JSX Props
 
 Disallows the usage of unbound callbacks to methods of `this` in ES6 style React classes.
 
@@ -24,8 +24,10 @@ class MyClass extends React.Component {
 }
 ```
 
+
 The following patterns are allowed:
 
+##### Binding in constructor
 ```js
 import React from 'react';
 class MyClass extends React.Component {
@@ -43,6 +45,7 @@ class MyClass extends React.Component {
 }
 ```
 
+##### Declaring with arrow function expression
 ```js
 import React from 'react';
 class MyClass extends React.Component {
@@ -56,8 +59,26 @@ class MyClass extends React.Component {
 }
 ```
 
+##### No access to `this` in the method body
+```js
+import React from 'react';
+import _debug from 'debug';
+const debug = _debug('test');
+
+class MyClass extends React.Component {
+	onClick( event ) {
+		debug('hello ' + event.target);
+	}
+	
+	render() {
+		<div onClick={ this.onClick } />
+	}
+}
+```
+
 The followings are allowed by this rule, but discouraged in Calypso:
 
+##### .bind() in JSX props
 ```js
 import React from 'react';
 class MyClass extends React.Component {
@@ -71,6 +92,7 @@ class MyClass extends React.Component {
 }
 ```
 
+##### Arrow function in JSX props
 ```js
 import React from 'react';
 class MyClass extends React.Component {
@@ -84,6 +106,7 @@ class MyClass extends React.Component {
 }
 ```
 
+##### Using `React.createClass`
 ```js
 import React from 'react';
 const MyComponent = React.createClass( {
