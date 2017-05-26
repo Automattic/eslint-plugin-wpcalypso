@@ -59,6 +59,8 @@ const FUNC_ERROR_MESSAGE = "Don't instantiate functions within `connect`." + REF
 		};
 		connect( mapStateToProps );
 		`,
+
+		'connect();'
 	],
 
 	invalid: [
