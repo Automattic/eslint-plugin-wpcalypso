@@ -1,6 +1,6 @@
 
 /**
- * @fileoverview Disallow new functions inside `mapStateToProps`
+ * @fileoverview Disallow creation of selectors bound to Redux state
  * @author Automattic
  * @copyright 2017 Automattic. All rights reserved.
  * See LICENSE.md file in root directory for full license.

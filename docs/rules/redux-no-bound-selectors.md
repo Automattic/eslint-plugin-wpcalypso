@@ -1,6 +1,6 @@
-# Disallow function binding and instantiation within `mapStateToProps`
+# Disallow creation of selectors bound to Redux state
 
-Disallows the anti-pattern of creating functions within the function that gets passed as the first argument to `react-redux#connect`, _aka_ within `mapStateToProps`. See [`wp-calypso#14024`](https://github.com/Automattic/wp-calypso/issues/14024) for details.
+Disallows the anti-pattern of creating functions within the function that gets passed as the first argument to `react-redux#connect`, _aka_ within `mapStateToProps`. See [`wp-calypso#14024`](https://github.com/Automattic/wp-calypso/issues/14024) for details. The title of this document mentions selectors because their appearance is what originated this rule, but all functions apply.
 
 ## Rule details
 
