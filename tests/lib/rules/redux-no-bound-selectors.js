@@ -62,7 +62,7 @@ const FUNC_ERROR_MESSAGE = "Don't instantiate functions within `connect`." + REF
 
 		`connect( function( state ) {
 			return {
-				getSite: state.foo.bind
+				value: state.foo.bind.bar
 			};
 		} )( Foo )
 		`,
