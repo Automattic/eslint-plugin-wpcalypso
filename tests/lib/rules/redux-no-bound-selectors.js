@@ -67,7 +67,9 @@ const FUNC_ERROR_MESSAGE = "Don't instantiate functions within `connect`." + REF
 		} )( Foo )
 		`,
 
-		'connect();'
+		'connect();',
+
+		"connect( partialRight( mapState, 'foo' ) );"
 	],
 
 	invalid: [
@@ -75,6 +77,36 @@ const FUNC_ERROR_MESSAGE = "Don't instantiate functions within `connect`." + REF
 			code: `connect( function( state ) {
 				return {
 					getSite: getSite.bind( null, state )
+				};
+			} )( Foo )`,
+			errors: [ {
+				message: BIND_ERROR_MESSAGE
+			} ]
+		},
+		{
+			code: `connect( function( state ) {
+				return {
+					getSite: bind( getSite, state )
+				};
+			} )( Foo )`,
+			errors: [ {
+				message: BIND_ERROR_MESSAGE
+			} ]
+		},
+		{
+			code: `connect( function( state ) {
+				return {
+					getSite: partial( getSite, state )
+				};
+			} )( Foo )`,
+			errors: [ {
+				message: BIND_ERROR_MESSAGE
+			} ]
+		},
+		{
+			code: `connect( function( state ) {
+				return {
+					getSite: partialRight( getSite, state )
 				};
 			} )( Foo )`,
 			errors: [ {
