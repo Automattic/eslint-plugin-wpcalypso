@@ -27,7 +27,7 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "eslint": "^4.6.1",
-    "eslint-config-wpcalypso": "^1.0.0",
+    "eslint-config-wpcalypso": "Automattic/eslint-config-wpcalypso#try/compact-linting-tools",
     "eslint-plugin-wpcalypso": "file:.",
     "mocha": "^3.0.2"
   },
