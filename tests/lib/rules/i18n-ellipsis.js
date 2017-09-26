@@ -46,36 +46,42 @@ var rule = require( '../../../lib/rules/i18n-ellipsis' ),
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
+			output: 'this.translate( \'Hello World…\' );',
 		},
 		{
 			code: 'i18n.translate( \'Hello World...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
+			output: 'i18n.translate( \'Hello World…\' );',
 		},
 		{
 			code: 'i18n.translate( `Hello World...` );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
+			output: 'i18n.translate( `Hello World…` );',
 		},
 		{
 			code: 'translate( \'Hello World...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
+			output: 'translate( \'Hello World…\' );',
 		},
 		{
 			code: 'translate( \'Hello World…\', \'Hello Worlds...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
+			output: 'translate( \'Hello World…\', \'Hello Worlds…\' );',
 		},
 		{
 			code: '( 0, translate )( \'Hello World...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
+			output: '( 0, translate )( \'Hello World…\' );',
 		},
 	],
 } );
