@@ -49,6 +49,13 @@ var rule = require( '../../../lib/rules/i18n-ellipsis' ),
 			output: 'this.translate( \'Hello World…\' );',
 		},
 		{
+			code: 'this.translate( "Hello World..." );',
+			errors: [ {
+				message: rule.ERROR_MESSAGE,
+			} ],
+			output: 'this.translate( "Hello World…" );',
+		},
+		{
 			code: 'i18n.translate( \'Hello World...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
