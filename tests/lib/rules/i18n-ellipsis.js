@@ -60,7 +60,7 @@ var rule = require( '../../../lib/rules/i18n-ellipsis' ),
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'i18n.translate( `Hello World…` );',
+			output: 'i18n.translate( \'Hello World…\' );',
 		},
 		{
 			code: 'translate( \'Hello World...\' );',
