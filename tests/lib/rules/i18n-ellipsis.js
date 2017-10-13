@@ -21,16 +21,22 @@ var rule = require( '../../../lib/rules/i18n-ellipsis' ),
 ( new RuleTester( config ) ).run( 'i18n-ellipsis', rule, {
 	valid: [
 		{
-			code: 'this.translate( \'Hello World…\' );',
+			code: 'translate( \'Hello World…\' );',
 		},
 		{
 			code: 'i18n.translate( \'Hello World…\' );',
 		},
 		{
-			code: 'translate( \'Hello World…\' );',
+			code: 'this.translate( \'Hello World…\' );',
+		},
+		{
+			code: 'translate( "Hello World…" );',
 		},
 		{
 			code: 'translate( `Hello World…` );',
+		},
+		{
+			code: 'translate( `Hello ${ World }…` );',
 		},
 		{
 			code: 'translate( \'Hello World…\', \'Hello Worlds…\' );',
@@ -42,18 +48,11 @@ var rule = require( '../../../lib/rules/i18n-ellipsis' ),
 
 	invalid: [
 		{
-			code: 'this.translate( \'Hello World...\' );',
+			code: 'translate( \'Hello World...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'this.translate( \'Hello World…\' );',
-		},
-		{
-			code: 'this.translate( "Hello World..." );',
-			errors: [ {
-				message: rule.ERROR_MESSAGE,
-			} ],
-			output: 'this.translate( "Hello World…" );',
+			output: 'translate( \'Hello World…\' );',
 		},
 		{
 			code: 'i18n.translate( \'Hello World...\' );',
@@ -63,60 +62,60 @@ var rule = require( '../../../lib/rules/i18n-ellipsis' ),
 			output: 'i18n.translate( \'Hello World…\' );',
 		},
 		{
-			code: 'i18n.translate( \'Fix string containing single quote(\\\')...\' );',
+			code: 'this.translate( \'Hello World...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'i18n.translate( \'Fix string containing single quote(\\\')…\' );',
+			output: 'this.translate( \'Hello World…\' );',
 		},
 		{
-			code: 'i18n.translate( \'Fix... \' + \'Joined strings...\' );',
+			code: 'translate( "Hello World..." );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'i18n.translate( \'Fix… \' + \'Joined strings…\' );',
+			output: 'translate( "Hello World…" );',
 		},
 		{
-			code: 'i18n.translate( \'Fix single quote \\\' containing \' + \'Joined strings...\' );',
+			code: 'translate( \'Fix... \' + \'Joined strings...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'i18n.translate( \'Fix single quote \\\' containing \' + \'Joined strings…\' );',
+			output: 'translate( \'Fix… \' + \'Joined strings…\' );',
 		},
 		{
-			code: 'i18n.translate( \'Fix ...\' + `Joined template` );',
+			code: 'translate( \'Fix ...\' + `Joined template` );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'i18n.translate( \'Fix …\' + `Joined template` );',
+			output: 'translate( \'Fix …\' + `Joined template` );',
 		},
 		{
-			code: 'i18n.translate( \'Fix ...\' + \'Multiple ... \' + \'Binary ...\' );',
+			code: 'translate( \'Fix ...\' + \'Multiple ... \' + \'Joined ...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'i18n.translate( \'Fix …\' + \'Multiple … \' + \'Binary …\' );',
+			output: 'translate( \'Fix …\' + \'Multiple … \' + \'Joined …\' );',
 		},
 		{
-			code: 'i18n.translate( `Hello World...` );',
+			code: 'translate( `Hello World...` );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'i18n.translate( `Hello World…` );',
+			output: 'translate( `Hello World…` );',
 		},
 		{
-			code: 'i18n.translate( `Hello ${ "World" }...` );',
+			code: 'translate( `Hello ${ "World" }...` );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'i18n.translate( `Hello ${ "World" }…` );',
+			output: 'translate( `Hello ${ "World" }…` );',
 		},
 		{
-			code: 'var world = "World"; i18n.translate( `Hello ${ world }...` );',
+			code: 'translate( `Hello ${ world }...` );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'var world = "World"; i18n.translate( `Hello ${ world }…` );',
+			output: 'translate( `Hello ${ world }…` );',
 		},
 		{
 			code: 'translate( \'Hello World...\' );',
