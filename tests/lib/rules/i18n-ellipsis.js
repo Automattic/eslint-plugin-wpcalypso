@@ -70,18 +70,32 @@ var rule = require( '../../../lib/rules/i18n-ellipsis' ),
 			output: 'i18n.translate( \'Fix string containing single quote(\\\')…\' );',
 		},
 		{
-			code: 'i18n.translate( \'Fix ...\' + \'Joined strings...\' );',
+			code: 'i18n.translate( \'Fix... \' + \'Joined strings...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'i18n.translate( \'Fix …Joined strings…\' );',
+			output: 'i18n.translate( \'Fix… \' + \'Joined strings…\' );',
 		},
 		{
-			code: 'i18n.translate( \'Fix single quote \\\' containing\' + \'Joined strings...\' );',
+			code: 'i18n.translate( \'Fix single quote \\\' containing \' + \'Joined strings...\' );',
 			errors: [ {
 				message: rule.ERROR_MESSAGE,
 			} ],
-			output: 'i18n.translate( \'Fix single quote \\\' containingJoined strings…\' );',
+			output: 'i18n.translate( \'Fix single quote \\\' containing \' + \'Joined strings…\' );',
+		},
+		{
+			code: 'i18n.translate( \'Fix ...\' + `Joined template` );',
+			errors: [ {
+				message: rule.ERROR_MESSAGE,
+			} ],
+			output: 'i18n.translate( \'Fix …\' + `Joined template` );',
+		},
+		{
+			code: 'i18n.translate( \'Fix ...\' + \'Multiple ... \' + \'Binary ...\' );',
+			errors: [ {
+				message: rule.ERROR_MESSAGE,
+			} ],
+			output: 'i18n.translate( \'Fix …\' + \'Multiple … \' + \'Binary …\' );',
 		},
 		{
 			code: 'i18n.translate( `Hello World...` );',
