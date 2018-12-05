@@ -1,3 +1,7 @@
+# This repository has moved!
+
+It is not part of the [Calypso](https://github.com/Automattic/wp-calypso/tree/master/packages/eslint-plugin-wpcalypso) repository.
+
 # eslint-plugin-wpcalypso
 
 Custom ESLint rules for the [WordPress.com Calypso project](https://github.com/automattic/wp-calypso).
