@@ -1,6 +1,6 @@
 # This repository has moved!
 
-It is not part of the [Calypso](https://github.com/Automattic/wp-calypso/tree/master/packages/eslint-plugin-wpcalypso) repository.
+It is now part of the [Calypso](https://github.com/Automattic/wp-calypso/tree/master/packages/eslint-plugin-wpcalypso) repository.
 
 # eslint-plugin-wpcalypso
 
